@@ -43,7 +43,7 @@ The "Welcome to React" is a message that comes from the Express server.
 
 Create React App and the Express server are running on different processes. This is so that React can still use in memory Webpack to do hot reloads really fast.
 
-All AJAX/fetch requests to `/api` are sent back to the Express server which is serving all `/api` routes from the `routes/index.js` file. This is done via a proxy setup in the `package.json` file.
+All AJAX/fetch requests to `/api` are sent back to the Express server which is serving all `/api` routes from the `routes/ServiceProvider.js` file. This is done via a proxy setup in the `package.json` file.
 
 ## Building For Production
 
