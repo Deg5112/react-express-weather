@@ -26,7 +26,8 @@
     "nodemon": "^2.0.7"
   },
   "scripts": {
-    "start": "craco start",
+    "start": "node server/server.js",
+    "cracoStart": "craco start",
     "startWithNodeBackend": "concurrently \"craco start\" \"nodemon server/server.js\"",
     "build": "craco build && mv build server",
     "test": "react-scripts test --env=jsdom",
