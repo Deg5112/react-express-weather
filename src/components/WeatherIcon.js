@@ -1,5 +1,5 @@
 import React from 'react'
-
+//
 const WeatherIcon = ({icon, big}) => {
  let size = '';
  if (big) {
