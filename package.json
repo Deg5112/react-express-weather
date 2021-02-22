@@ -28,7 +28,7 @@
   "scripts": {
     "start": "craco start",
     "startWithNodeBackend": "concurrently \"craco start\" \"nodemon server/server.js\"",
-    "build": "react-scripts build && mv build server",
+    "build": "craco build && mv build server",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "debug": "nodemon server/server.js",
