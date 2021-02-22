@@ -26,15 +26,15 @@ const WeatherPage = ({classes, toggleLoader}) => {
   const [cityState, setCityState] = useState('');
 
   const fetchWeatherData = async (latLng) => {
-    toggleLoader(true)
+    toggleLoader(true);
     const {data} = await weatherService.getWeatherData(latLng.latitude, latLng.longitude);
 
-    dispatch(setWeather(data))
+    dispatch(setWeather(data));
     toggleLoader(false)
   };
 
   const getCurrentLocation = () => {
-    toggleLoader(true)
+    toggleLoader(true);
     geoService.getCurrentPosition(({coords: {latitude, longitude}}) => {
       setLatLng({latitude, longitude});
     })
@@ -56,16 +56,16 @@ const WeatherPage = ({classes, toggleLoader}) => {
     const isDay = DateService.isDay(sunrise, sunset);
 
     const main = weather[0].main;
-    console.log({main})
+    console.log({main});
 
     switch (main) {
       case 'Clear':
-        return isDay ? ClearSkiesDay : ClearSkiesNight
+        return isDay ? ClearSkiesDay : ClearSkiesNight;
       case 'Rain':
       case 'Drizzle':
-        return isDay ? RainyDay : RainyNight
+        return isDay ? RainyDay : RainyNight;
       case 'Clouds':
-        return isDay ? CloudyDay : CloudyNight
+        return isDay ? CloudyDay : CloudyNight;
       case 'Thunderstorm':
         return StormDay
     }
@@ -85,7 +85,6 @@ const WeatherPage = ({classes, toggleLoader}) => {
 
     fetchWeatherData(latLng)
   }, [latLng]);
-
 
   return (
     <Grid
@@ -135,7 +134,7 @@ const WeatherPage = ({classes, toggleLoader}) => {
       </Grid>
     </Grid>
   )
-}
+};
 
 
 export default CustomConnect({
