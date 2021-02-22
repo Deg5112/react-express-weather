@@ -1,5 +1,6 @@
 * {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
+    font-size: 16px;
 }
 
 #circular-progress {
@@ -10,3 +11,35 @@
     transform: translate(-50%, -50%);
 }
 
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+}
+::-webkit-scrollbar-thumb {
+    background: gray;
+    border: 1px solid black;
+    border-radius: 50px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: gray;
+}
+::-webkit-scrollbar-thumb:active {
+    background: gray;
+}
+::-webkit-scrollbar-track {
+    border: 0px none #ffffff;
+    border-radius: 53px;
+}
+::-webkit-scrollbar-track:hover {
+    background: gray;
+}
+::-webkit-scrollbar-track:active {
+    background: gray;
+}
+::-webkit-scrollbar-corner {
+    background: transparent;
+}

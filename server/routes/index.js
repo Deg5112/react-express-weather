@@ -9,7 +9,7 @@ router.get('/weather-key', async (req, res, next) => {
 });
 
 router.get('/weather-data', async ({query: {lat, lon}}, res, next) => {
-  const { data } = await axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}`)
+  const { data } = await axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`)
 
   res.json(data);
 });

@@ -5,7 +5,7 @@ import {useSelector} from 'react-redux'
 
 const Loader = () => {
   const showLoader = useSelector(state => state.loader.showLoader);
-  console.log({showLoader})
+
   return (
     <div id='circular-progress'>
       {showLoader && <CircularProgress />}

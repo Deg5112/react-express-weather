@@ -1,15 +1,15 @@
-import { TOGGLING_LOADER } from "@store/actions/loader";
+import { SET_WEATHER } from "@store/actions/weather";
 
 const initialState = {
-  showLoader: false,
+  weatherData: null,
 };
 
 function loader(state = initialState, action) {
   switch (action.type) {
-    case TOGGLING_LOADER:
+    case SET_WEATHER:
       return {
         ...state,
-        showLoader: action.payload
+        weatherData: action.payload
       }
     default: return state;
   }
