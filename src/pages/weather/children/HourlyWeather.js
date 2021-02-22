@@ -59,24 +59,16 @@ export default CustomConnect({
   styles: theme => ({
     todaysDate: {
       textAlign: 'center',
-      ...whiteText
-    },
-    hourlyTime: {
-      ...whiteText
     },
     todaysDesciption: {
       textAlign: 'center',
-      ...whiteText
-    },
-    temp: {
-      ...whiteText,
-    },
-    degree: {
-      ...whiteText,
     },
     hourlyContainer: {
+      borderBottom: '1px solid white',
+      borderTop: '1px solid white',
       overflowX: 'scroll',
-      padding: 15
+      padding: 15,
+      ...whiteText,
     },
     hourlyItem: {
       width: 100

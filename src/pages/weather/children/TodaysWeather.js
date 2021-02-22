@@ -29,7 +29,7 @@ const TodaysWeather = ({classes}) => {
               className={classes.contentContainer}
             >
               <Grid item>
-                <WeatherIcon icon={icon} />
+                <WeatherIcon icon={icon} big={true} />
               </Grid>
             </Grid>
           </Grid>

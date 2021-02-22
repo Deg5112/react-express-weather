@@ -11,12 +11,13 @@ import {useSelector, useDispatch} from 'react-redux'
 import { setWeather } from '@store/actions/weather'
 import TodaysWeather from './children/TodaysWeather'
 import HourlyWeather from './children/HourlyWeather'
+import DailyWeather from './children/DailyWeather'
 
 const WeatherPage = ({classes, toggleLoader}) => {
   const weatherData = useSelector(state => state.weather.weatherData);
   const dispatch = useDispatch();
   const [latLng, setLatLng] = useState(null);
-  const [cityState, setCityState] = useState(null);
+  const [cityState, setCityState] = useState('');
 
   const fetchWeatherData = async (latLng) => {
     const {data} = await weatherService.getWeatherData(latLng.latitude, latLng.longitude);
@@ -35,8 +36,8 @@ const WeatherPage = ({classes, toggleLoader}) => {
 
   const initAutoComplete = () => {
     const autoCompleteEl = document.getElementById('autocomplete');
-    geoService.initAutoComplete(autoCompleteEl, () => {
-
+    geoService.initAutoComplete(autoCompleteEl, ({lat, lng}) => {
+      setLatLng({latitude: lat, longitude: lng});
     })
   };
 
@@ -49,16 +50,14 @@ const WeatherPage = ({classes, toggleLoader}) => {
     if(!latLng) { return; }
 
     geoService.reverseGeoCode(latLng.latitude, latLng.longitude, (city, state, country) => {
-      setCityState({city, state, country})
+      setCityState(`${city}, ${state} ${country}`)
     });
 
     fetchWeatherData(latLng)
   }, [latLng]);
 
   return (
-    <Grid
-      container
-    >
+    <Grid container className={classes.weatherPage}>
       <Grid
         container
         justify={"center"}
@@ -75,13 +74,14 @@ const WeatherPage = ({classes, toggleLoader}) => {
           >
             <Grid
               item
+              id={'auto-complete-container'}
               className={classes.autoCompleteContainer}
             >
               <input
                 id={'autocomplete'}
                 className={classes.autoComplete}
-                value={`${cityState ? `${cityState.city}, ${cityState.state} ${cityState.country}` : ''}`}
-                readOnly
+                value={cityState}
+                onChange={e => setCityState(e.target.value)}
               />
             </Grid>
             <Grid
@@ -96,6 +96,9 @@ const WeatherPage = ({classes, toggleLoader}) => {
       <Grid container className={classes.hourlyAndDailyContainer}>
         <HourlyWeather />
       </Grid>
+      <Grid container className={classes.hourlyAndDailyContainer}>
+        <DailyWeather />
+      </Grid>
     </Grid>
   )
 }
@@ -104,6 +107,9 @@ const WeatherPage = ({classes, toggleLoader}) => {
 export default CustomConnect({
   component: WeatherPage,
   styles: theme => ({
+    weatherPage: {
+
+    },
     todayContainer: {
       height: '50vh',
       backgroundRepeat: 'no-repeat',
@@ -113,7 +119,8 @@ export default CustomConnect({
       height: '100%'
     },
     autoCompleteContainer: {
-      width: '100%'
+      width: '100%',
+      padding: '0px 10px'
     },
     todaysContainerItem: {
       width: '100%'

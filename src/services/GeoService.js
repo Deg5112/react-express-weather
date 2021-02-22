@@ -50,9 +50,8 @@ class GeoService {
           });
         }
 
-        const locationData = self.getLocationDataFromAddressComponents(
-          place.address_components
-        );
+        const locationData = self.getLocationDataFromAddressComponents(place.address_components);
+
         cb({
           formattedAddress: place.formatted_address,
           geometry: place.geometry,

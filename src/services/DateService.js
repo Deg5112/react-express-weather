@@ -18,6 +18,10 @@ class DateService {
   getTimeFromUnix(timestamp) {
     return moment.unix(timestamp).local().format("hA");
   }
+
+  getDayFromUnix(timestamp) {
+    return moment.unix(timestamp).local().format("dddd");
+  }
 }
 
 export default DateService;
