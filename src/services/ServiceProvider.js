@@ -1,9 +1,11 @@
 import GeoService from './GeoService'
 import WeatherService from './WeatherService'
+import DateService from './DateService'
 
 const serviceRegistration = {
   geo: GeoService,
-  weather: WeatherService
+  weather: WeatherService,
+  date: DateService
 }
 
 class ServiceProvider {

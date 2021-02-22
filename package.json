@@ -12,13 +12,17 @@
     "express": "^4.15.3",
     "http-proxy-middleware": "^1.0.6",
     "jade": "^1.11.0",
+    "moment": "^2.29.1",
     "morgan": "^1.8.2",
     "react": "^16.14.0",
-    "react-dom": "^16.14.0"
+    "react-dom": "^16.14.0",
+    "react-redux": "^7.2.2",
+    "react-toast": "^1.0.1",
+    "redux": "^4.0.5"
   },
   "devDependencies": {
     "concurrently": "^3.5.0",
-    "nodemon": "^1.12.0",
+    "nodemon": "^2.0.7",
     "react-scripts": "4.0.2"
   },
   "scripts": {
@@ -26,7 +30,9 @@
     "startWithNodeBackend": "concurrently \"craco start\" \"nodemon server/server.js\"",
     "build": "react-scripts build && mv build server",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "debug": "nodemon server/server.js",
+    "kill": "kill $(lsof -t -i:3001) | exit 0"
   },
   "browserslist": {
     "production": [

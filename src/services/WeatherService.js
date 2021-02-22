@@ -1,8 +1,8 @@
 import axios from "axios";
 
 class WeatherService {
-  async getWeatherData() {
-    return await axios.get('/api/weather-data');
+  async getWeatherData(lat, lon) {
+    return await axios.get(`/api/weather-data?lat=${lat}&lon=${lon}`);
   }
 }
 
