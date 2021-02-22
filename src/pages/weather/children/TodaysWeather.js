@@ -2,9 +2,9 @@ import {Grid} from "@material-ui/core";
 import React from "react";
 import {useSelector} from "react-redux";
 import WeatherIcon from '@components/WeatherIcon'
-import {whiteText} from '@styles';
 import ServiceProvider from '@serviceProvider';
 const DateService = ServiceProvider.make('date');
+import Temp from '@components/Temp'
 import CustomConnect from '@store/connect/CustomConnect'
 
 const TodaysWeather = ({classes}) => {
@@ -43,16 +43,7 @@ const TodaysWeather = ({classes}) => {
             >
               <Grid item>
                 <Grid item>
-                  <Grid container>
-                    <Grid item>
-                    <span className={classes.temp}>
-                      {temp}
-                    </span>
-                    </Grid>
-                    <Grid item>
-                      <span className={classes.degree}>&#176;</span>
-                    </Grid>
-                  </Grid>
+                  <Temp temp={temp} big={true} />
                 </Grid>
               </Grid>
             </Grid>
@@ -88,19 +79,15 @@ export default CustomConnect({
   styles: theme => ({
     todaysDate: {
       textAlign: 'center',
-      ...whiteText
     },
     todaysDesciption: {
       textAlign: 'center',
-      ...whiteText
     },
     temp: {
-      ...whiteText,
       fontSize: '2.5em'
     },
     degree: {
       fontSize: '2em',
-      ...whiteText,
     },
     contentContainer: {
       height: '100%'

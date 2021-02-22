@@ -1,5 +1,11 @@
 import {Grid, withStyles} from "@material-ui/core";
-import ClearSkies from "@images/clear_skies.jpeg";
+import ClearSkiesDay from "@images/clear_skies.jpeg";
+import ClearSkiesNight from "@images/clear-night.jpeg";
+import CloudyDay from "@images/cloudy.jpeg"
+import CloudyNight from "@images/cloudy-night.jpeg";
+import RainyDay from "@images/rainy-day.jpeg";
+import RainyNight from "@images/rainy-night.jpeg";
+import StormDay from "@images/storm.jpeg";
 import React, {useEffect, useState} from "react";
 import ServiceProvider from '@serviceProvider';
 const geoService = ServiceProvider.make('geo');
@@ -20,8 +26,8 @@ const WeatherPage = ({classes, toggleLoader}) => {
   const [cityState, setCityState] = useState('');
 
   const fetchWeatherData = async (latLng) => {
+    toggleLoader(true)
     const {data} = await weatherService.getWeatherData(latLng.latitude, latLng.longitude);
-    console.log('weather data', data)
 
     dispatch(setWeather(data))
     toggleLoader(false)
@@ -41,6 +47,30 @@ const WeatherPage = ({classes, toggleLoader}) => {
     })
   };
 
+  const getBackground = () => {
+    if (!weatherData) {
+      return ClearSkiesDay
+    }
+
+    const { current:  { sunrise, sunset, weather} } = weatherData;
+    const isDay = DateService.isDay(sunrise, sunset);
+
+    const main = weather[0].main;
+    console.log({main})
+
+    switch (main) {
+      case 'Clear':
+        return isDay ? ClearSkiesDay : ClearSkiesNight
+      case 'Rain':
+      case 'Drizzle':
+        return isDay ? RainyDay : RainyNight
+      case 'Clouds':
+        return isDay ? CloudyDay : CloudyNight
+      case 'Thunderstorm':
+        return StormDay
+    }
+  }
+
   useEffect(() => {
     getCurrentLocation();
     initAutoComplete()
@@ -56,12 +86,16 @@ const WeatherPage = ({classes, toggleLoader}) => {
     fetchWeatherData(latLng)
   }, [latLng]);
 
+
   return (
-    <Grid container className={classes.weatherPage}>
+    <Grid
+      container
+      className={`${classes.weatherPage} ${classes.whiteText}`}
+      style={{ backgroundImage: `url(${getBackground()})`}}
+    >
       <Grid
         container
         justify={"center"}
-        style={{ backgroundImage: `url(${ClearSkies})`}}
         className={classes.todayContainer}
       >
         <Grid item xs={12} sm={10} md={8}>
@@ -107,13 +141,16 @@ const WeatherPage = ({classes, toggleLoader}) => {
 export default CustomConnect({
   component: WeatherPage,
   styles: theme => ({
+    whiteText: {
+      ...whiteText
+    },
     weatherPage: {
-
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: 'cover',
+      minHeight: '100vh'
     },
     todayContainer: {
       height: '50vh',
-      backgroundRepeat: 'no-repeat',
-      backgroundSize: 'cover'
     },
     todaysContentContainer: {
       height: '100%'
@@ -137,7 +174,7 @@ export default CustomConnect({
       color: 'black'
     },
     hourlyAndDailyContainer: {
-      backgroundColor: '#88ADE3'
+      // backgroundColor: '#88ADE3'
     }
   })
 });

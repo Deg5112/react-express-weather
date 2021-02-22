@@ -24,22 +24,12 @@
     border: 1px solid black;
     border-radius: 50px;
 }
-::-webkit-scrollbar-thumb:hover {
-    background: gray;
-}
-::-webkit-scrollbar-thumb:active {
-    background: gray;
-}
+
 ::-webkit-scrollbar-track {
     border: 0px none #ffffff;
     border-radius: 53px;
 }
-::-webkit-scrollbar-track:hover {
-    background: gray;
-}
-::-webkit-scrollbar-track:active {
-    background: gray;
-}
+
 ::-webkit-scrollbar-corner {
     background: transparent;
 }

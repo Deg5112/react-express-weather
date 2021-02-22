@@ -2,7 +2,7 @@ import {Grid} from "@material-ui/core";
 import React from "react";
 import {useSelector} from "react-redux";
 import WeatherIcon from '@components/WeatherIcon'
-import {whiteText} from '@styles';
+import Temp from '@components/Temp'
 import ServiceProvider from '@serviceProvider';
 const DateService = ServiceProvider.make('date');
 import CustomConnect from '@store/connect/CustomConnect'
@@ -31,19 +31,12 @@ const HourlyWeather = ({classes}) => {
                   { index === 0 ? 'Now' : DateService.getTimeFromUnix(dt) }
                 </Grid>
                 <Grid item>
-                  <WeatherIcon icon={weather[0].icon} />
+                  <Grid container>
+                    <WeatherIcon icon={weather[0].icon} />
+                  </Grid>
                 </Grid>
                 <Grid item>
-                  <Grid container alignItems={"center"}>
-                    <Grid item>
-                    <span className={classes.temp}>
-                      {temp}
-                    </span>
-                    </Grid>
-                    <Grid item>
-                      <span className={classes.degree}>&#176;</span>
-                    </Grid>
-                  </Grid>
+                  <Temp temp={temp} />
                 </Grid>
               </Grid>
             </Grid>
@@ -68,7 +61,6 @@ export default CustomConnect({
       borderTop: '1px solid white',
       overflowX: 'scroll',
       padding: 15,
-      ...whiteText,
     },
     hourlyItem: {
       width: 100
