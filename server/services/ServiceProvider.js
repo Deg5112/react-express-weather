@@ -1,4 +1,4 @@
-const WeatherService = require('./WeatherService')
+import WeatherService from './WeatherService';
 
 const serviceRegistration = {
   weather: WeatherService,
@@ -21,4 +21,4 @@ class ServiceProvider {
   }
 }
 
-module.exports = new ServiceProvider()
+export default new ServiceProvider()

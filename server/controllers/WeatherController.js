@@ -1,4 +1,4 @@
-const ServiceProvider = require('../services/ServiceProvider')
+import ServiceProvider from '../services/ServiceProvider'
 const WeatherService = ServiceProvider.make('weather');
 
 class WeatherController {
@@ -14,4 +14,4 @@ class WeatherController {
   }
 }
 
-module.exports = new WeatherController(WeatherService)
+export default new WeatherController(WeatherService)

@@ -1,4 +1,4 @@
-const axios = require("axios");
+import axios from 'axios'
 
 class WeatherService {
   async getWeatherData(lat, lon) {
@@ -6,4 +6,4 @@ class WeatherService {
   }
 }
 
-module.exports = WeatherService
+export default WeatherService
