@@ -9,5 +9,12 @@ module.exports = {
       '@styles': path.resolve(__dirname, "src/styles/shared"),
       '@images': path.resolve(__dirname, "src/images"),
     }
-  }
+  },
+  jest: {
+    babel: {
+      addPresets: true, /* (default value) */
+      addPlugins: true  /* (default value) */
+    },
+    configure: (jestConfig, { env, paths, resolve, rootDir }) => { return jestConfig; }
+  },
 }

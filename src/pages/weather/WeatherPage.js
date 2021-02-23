@@ -35,9 +35,13 @@ const WeatherPage = ({classes, toggleLoader}) => {
 
   const getCurrentLocation = () => {
     toggleLoader(true);
-    geoService.getCurrentPosition(({coords: {latitude, longitude}}) => {
-      setLatLng({latitude, longitude});
-    })
+    geoService.getCurrentPosition(
+      ({coords: {latitude, longitude}}) => {
+        setLatLng({latitude, longitude});
+      }),
+      (error) => {
+        toggleLoader(false)
+      }
   };
 
   const initAutoComplete = () => {

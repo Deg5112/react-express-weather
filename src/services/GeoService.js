@@ -1,6 +1,7 @@
 class GeoService {
   getCurrentPosition = callback => {
     const geolocateSuccess = pos => callback(pos)
+
     const geolocateError = error => {
       let geolocateCodeError = '';
 
@@ -60,21 +61,6 @@ class GeoService {
           locationData: locationData
         });
       }
-    );
-  }
-
-  addressComponentsOnlyContainCountry(locationData) {
-    return (
-      Object.keys(locationData).length === 2 &&
-      locationData.hasOwnProperty("countryLong") &&
-      locationData.hasOwnProperty("countryShort")
-    );
-  }
-
-  addressComponentsContainCity(locationData) {
-    return (
-      locationData.hasOwnProperty("cityLong") &&
-      locationData.hasOwnProperty("cityShort")
     );
   }
 

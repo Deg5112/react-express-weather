@@ -2,11 +2,10 @@ import React from 'react';
 import './App.css';
 import {Grid} from '@material-ui/core'
 import moment from 'moment';
-window.moment = moment;
+
 import WeatherPage from '@pages/weather/WeatherPage';
 import { Provider } from "react-redux";
 import store from "@store"
-window.store = store;
 import Loader from '@components/Loader'
 
 const App = () => {

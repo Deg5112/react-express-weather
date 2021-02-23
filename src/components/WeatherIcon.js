@@ -7,7 +7,7 @@ const WeatherIcon = ({icon, big}) => {
  }
 
  return (
-   <img src={`http://openweathermap.org/img/wn/${icon}${size}.png`}/>
+   <img src={`https://openweathermap.org/img/wn/${icon}${size}.png`}/>
  )
 }
 
