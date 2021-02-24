@@ -115,7 +115,6 @@ class GeoService {
       }
     }
 
-    console.log({locationDetails})
     return locationDetails;
   }
 }

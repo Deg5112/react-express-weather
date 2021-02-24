@@ -60,7 +60,6 @@ const WeatherPage = ({classes, toggleLoader}) => {
     const isDay = DateService.isDay(sunrise, sunset);
 
     const main = weather[0].main;
-    console.log({main});
 
     switch (main) {
       case 'Clear':
