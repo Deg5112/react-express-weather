@@ -3,7 +3,7 @@ import React from "react";
 import {useSelector} from "react-redux";
 import WeatherIcon from '@components/WeatherIcon'
 import Temp from '@components/Temp'
-import ServiceProvider from '@serviceProvider';
+import ServiceProvider from '@services/ServiceProvider';
 const DateService = ServiceProvider.make('date');
 import CustomConnect from '@store/connect/CustomConnect'
 

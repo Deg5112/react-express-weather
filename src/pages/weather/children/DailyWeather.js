@@ -2,7 +2,7 @@ import {Grid} from "@material-ui/core";
 import React from "react";
 import {useSelector} from "react-redux";
 import WeatherIcon from '@components/WeatherIcon'
-import ServiceProvider from '@serviceProvider';
+import ServiceProvider from '@services/ServiceProvider';
 const DateService = ServiceProvider.make('date');
 import Temp from '@components/Temp'
 import CustomConnect from '@store/connect/CustomConnect'

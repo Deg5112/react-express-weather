@@ -9,7 +9,7 @@ class WeatherController {
   }
 
   async getWeatherData({query: {lat, lon}}, res, next) {
-    const {data} = await this.weatherService.getWeatherData(lat, lon);
+    const data = await this.weatherService.getWeatherData(lat, lon);
     return res.json(data);
   }
 }

@@ -1,7 +1,7 @@
-import WeatherService from './WeatherService';
+import OpenWeatherService from './OpenWeatherService';
 
 const serviceRegistration = {
-  weather: WeatherService,
+  weather: OpenWeatherService,
 }
 
 class ServiceProvider {

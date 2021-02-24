@@ -7,11 +7,11 @@ import RainyDay from "@images/rainy-day.jpeg";
 import RainyNight from "@images/rainy-night.jpeg";
 import StormDay from "@images/storm.jpeg";
 import React, {useEffect, useState} from "react";
-import ServiceProvider from '@serviceProvider';
+import ServiceProvider from '@services/ServiceProvider';
 const geoService = ServiceProvider.make('geo');
 const weatherService = ServiceProvider.make('weather');
 const DateService = ServiceProvider.make('date');
-import {whiteText} from '@styles';
+import {whiteText} from '../../styles/shared';
 import CustomConnect from '@store/connect/CustomConnect'
 import {useSelector, useDispatch} from 'react-redux'
 import { setWeather } from '@store/actions/weather'
@@ -34,14 +34,14 @@ const WeatherPage = ({classes, toggleLoader}) => {
   };
 
   const getCurrentLocation = () => {
-    toggleLoader(true);
     geoService.getCurrentPosition(
       ({coords: {latitude, longitude}}) => {
         setLatLng({latitude, longitude});
-      }),
+      },
       (error) => {
         toggleLoader(false)
       }
+    )
   };
 
   const initAutoComplete = () => {

@@ -34,7 +34,7 @@
     "cracoStart": "craco -r esm start",
     "startWithNodeBackend": "concurrently \"craco start\" \"nodemon -r esm server/server.js\"",
     "build": "craco build && mv build server",
-    "test": "craco test --env=jsdom",
+    "test": "craco test --verbose=false --env=jsdom",
     "eject": "react-scripts eject",
     "debug": "nodemon server/server.js",
     "kill": "kill $(lsof -t -i:3001) | exit 0"
@@ -53,9 +53,11 @@
   },
   "jest": {
     "moduleNameMapper": {
-      "pages/(.*)": "<rootDir>/src/pages/$1",
-      "images/(.*)": "<rootDir>/src/images/$1",
-      "ServiceProvider/(.*)": "<rootDir>/src/services/substituted_module_$1.js"
+      "@pages/(.*)": "<rootDir>/src/pages/$1",
+      "@images/(.*)": "<rootDir>/src/images/$1",
+      "@store/(.*)": "<rootDir>/src/store/$1",
+      "@components/(.*)": "<rootDir>/src/components/$1",
+      "@services/(.*)": "<rootDir>/src/services/$1"
     }
   }
 }

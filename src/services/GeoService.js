@@ -1,5 +1,5 @@
 class GeoService {
-  getCurrentPosition = callback => {
+  getCurrentPosition = (callback, errCb) => {
     const geolocateSuccess = pos => callback(pos)
 
     const geolocateError = error => {
@@ -12,7 +12,8 @@ class GeoService {
         case error.UNKNOWN_ERROR:        geolocateCodeError = "An unknown error occurred.";                     break;
       }
 
-      console.error(geolocateCodeError);
+      console.log(geolocateCodeError)
+      errCb(geolocateCodeError)
     };
 
     navigator.geolocation.getCurrentPosition(geolocateSuccess, geolocateError, {

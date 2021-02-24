@@ -5,7 +5,7 @@ import moment from 'moment';
 
 import WeatherPage from '@pages/weather/WeatherPage';
 import { Provider } from "react-redux";
-import store from "@store"
+import store from "@store/index"
 import Loader from '@components/Loader'
 
 const App = () => {
